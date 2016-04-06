@@ -5,10 +5,7 @@ module FundAmerica
       # End point: https://apps.fundamerica.com/api/webhook_logs (GET)
       # Usage: FundAmerica::WebhookLog.list
       # Output: Returns list of webhook_logs
-      def list(page: nil, per: nil)
-        err_msg = "Please use both parameters, page and per, if you use them."
-        fail ArgumentError, err_msg if (page && !per) || (!page && per)
-
+      def list(page: 1, per: 25)
         request_uri = FundAmerica.base_uri + 'webhook_logs'
         request_uri += "/?page=#{page}&per=#{per}" if page
         API::request(:get, request_uri)
