@@ -8,7 +8,7 @@ module FundAmerica
       def request method, uri, options={}
         options = FundAmerica.basic_auth.merge!({:body => options})
         response = HTTParty.send(method, uri, options)
-        parsed_response = JSON.parse(response.body)
+        parsed_response = parse_response_body(response.body)
         if response.code.to_i == 200
           # Returns parsed_response - a hash of response body
           # if response is successful
@@ -37,6 +37,18 @@ module FundAmerica
       # Usage: FundAmerica::API.ledger_entry(ledger_entry_id)
       def ledger_entry(ledger_entry_id)
         API::request(:get, FundAmerica.base_uri + "ledger_entries/#{ledger_entry_id}")
+      end
+
+      # Parses a JSON response
+      def parse_response_body(body)
+        parsed_response = JSON.parse(body)
+      rescue JSON::ParserError => _e
+        # Would like to do an error message like:
+        #   "Could not parse response body as JSON: #{body}"
+        # but this gem only uses pre-assigned error message codes, and
+        # the "else" message is least misleading about what went wrong.
+        # See: https://github.com/rubyeffect/fund_america/blob/5e6b5184d1e5ca4bb7ccf7c17dd9d174f5ec6210/lib/fund_america/error.rb#L12-L28
+        raise FundAmerica::Error.new(body, 999)
       end
     end
   end
