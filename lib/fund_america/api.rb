@@ -8,7 +8,7 @@ module FundAmerica
       def request method, uri, options={}
         options = FundAmerica.basic_auth.merge!({:body => options})
         response = HTTParty.send(method, uri, options)
-        parsed_response = parse_response_body(response.body)
+        parsed_response = parse_response_body(response.body, response.code.to_i)
         if response.code.to_i == 200
           # Returns parsed_response - a hash of response body
           # if response is successful
@@ -40,7 +40,7 @@ module FundAmerica
       end
 
       # Parses a JSON response
-      def parse_response_body(body)
+      def parse_response_body(body, response_code)
         parsed_response = JSON.parse(body)
       rescue JSON::ParserError => _e
         # Would like to do an error message like:
@@ -48,7 +48,7 @@ module FundAmerica
         # but this gem only uses pre-assigned error message codes, and
         # the "else" message is least misleading about what went wrong.
         # See: https://github.com/rubyeffect/fund_america/blob/5e6b5184d1e5ca4bb7ccf7c17dd9d174f5ec6210/lib/fund_america/error.rb#L12-L28
-        raise FundAmerica::Error.new(body, 999)
+        raise FundAmerica::Error.new(body, response_code)
       end
     end
   end

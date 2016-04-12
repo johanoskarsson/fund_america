@@ -9,12 +9,12 @@ describe FundAmerica::API do
 
   context '#parse_response_body' do
     let(:body) { nil }
-    subject { FundAmerica::API.parse_response_body(body) }
+    subject { FundAmerica::API.parse_response_body(body, 404) }
 
     context 'sent a response.body of JSON' do
-      let(:body) { '{"foo": "bar"}' }
+      let(:body) { '{"message": "Could not find an entity with that ID"}' }
       it 'parses the JSON without error' do
-        expect(subject).to eq({'foo' => 'bar'})
+        expect(subject).to eq({'message' => 'Could not find an entity with that ID'})
       end
     end
 
