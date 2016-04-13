@@ -1,12 +1,14 @@
 module FundAmerica
   class Error < StandardError
     attr_reader :parsed_response
+    attr_reader :code
 
     # Contructor method to take response code and parsed_response
     # and give object methods in rescue - e.message and e.parsed_response
     def initialize(parsed_response, code)
       super(FundAmerica::Error.error_message(code))
       @parsed_response = parsed_response
+      @code = code
     end
 
     # Method to return error message based on the response code
