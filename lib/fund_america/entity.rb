@@ -83,7 +83,11 @@ module FundAmerica
         API::request(:get, FundAmerica.base_uri + "entities/#{entity_id}/bank_transfer_methods")
       end
 
-
+      # End point: https://apps.fundamerica.com/api/entities/:id/investor_accreditation (GET)
+      # Usage: FundAmerica::Entity.investor_accreditation(entity_id)
+      def investor_accreditation(entity_id)
+        API::request(:get, FundAmerica.base_uri + "entities/#{entity_id}/investor_accreditation")
+      end
     end
   end
 end
