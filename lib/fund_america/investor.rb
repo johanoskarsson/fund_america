@@ -21,8 +21,8 @@ module FundAmerica
       # Output: Updates an investor - proxy, joint, irc
       # Uses test_mode update when used in sandbox mode
       def update(investor_id, options)
-        end_point_path = "#{FundAmerica.mode == 'sandbox' ? 'test_mode/' : ''}" + "investors/#{investor_id}"
-        API::request(:patch, end_point_path, options)
+        end_point_url = FundAmerica.base_uri + "#{FundAmerica.mode == 'sandbox' ? 'test_mode/' : ''}" + "investors/#{investor_id}"
+        API::request(:patch, end_point_url, options)
       end
 
       # End point: https://apps.fundamerica.com/api/entities/:id (GET)

@@ -20,7 +20,8 @@ module FundAmerica
       # Usage: FundAmerica::Entity.update(entity_id, options)
       # Output: Updates an entity - person or company
       def update(entity_id, options)
-        API::request(:patch, "entities/#{entity_id}", options)
+        end_point_url = FundAmerica.base_uri + "entities/#{entity_id}"
+        API::request(:patch, end_point_url, options)
       end
 
       # End point: https://apps.fundamerica.com/api/entities/:id (GET)
