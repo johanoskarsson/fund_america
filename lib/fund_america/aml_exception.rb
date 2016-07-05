@@ -6,14 +6,14 @@ module FundAmerica
       # Usage: FundAmerica::AmlException.list
       # Output: Returns list of aml_exceptions
       def list
-        API::request(:get, FundAmerica.base_uri + 'aml_exceptions')
+        API::request(:get, 'aml_exceptions')
       end
 
       # End point: https://apps.fundamerica.com/api/aml_exceptions/:id (GET)
       # Usage: FundAmerica::AmlException.details(aml_exception_id)
       # Output: Returns the details of an aml_exception with matching id
       def details(aml_exception_id)
-        API::request(:get, FundAmerica.base_uri + "aml_exceptions/#{aml_exception_id}")
+        API::request(:get, "aml_exceptions/#{aml_exception_id}")
       end
 
       # End point: https://sandbox.fundamerica.com/api/test_mode/aml_exceptions/:id (PATCH)
