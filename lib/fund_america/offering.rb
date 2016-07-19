@@ -21,7 +21,7 @@ module FundAmerica
       # Output: Updates an offering
       # In sandbox mode accept_investments can only be updated
       def update(offering_id, options)
-        end_point_url = FundAmerica.mode == 'sandbox' ? 'test_mode/' : '' + "offerings/#{offering_id}"
+        end_point_url = (FundAmerica.mode == 'sandbox' ? 'test_mode/' : '') + "offerings/#{offering_id}"
         API::request(:patch, end_point_url, options)
       end
 
