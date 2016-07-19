@@ -7,7 +7,7 @@ module FundAmerica
       # Handles response and errors
       def request method, uri, options={}
         options = FundAmerica.basic_auth.merge!({:body => options})
-        uri = FundAmerica.base_uri + uri unless uri.include?('test_mode')
+        uri = FundAmerica.base_uri + uri
         response = HTTParty.send(method, uri, options)
         parsed_response = parse_response_body(response.body, response.code.to_i)
         if response.code.to_i == 200
@@ -25,7 +25,7 @@ module FundAmerica
       # Output: Clears all test data created in sandbox mode
       # Important: Sandbox mode only method
       def clear_data
-        API::request(:post, 'https://sandbox.fundamerica.com/api/test_mode/clear_data')
+        API::request(:post, 'test_mode/clear_data')
       end
 
       # End point: https://apps.fundamerica.com/api/investorsuitabilitytokens (POST)

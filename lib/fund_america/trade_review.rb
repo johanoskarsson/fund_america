@@ -14,7 +14,7 @@ module FundAmerica
       # Output: Updates a trade_review
       # Important: This works only for Sandbox mode
       def update(trade_review_id, options)
-        end_point_url = 'https://sandbox.fundamerica.com/api/test_mode/trade_reviews/' + trade_review_id
+        end_point_url = 'test_mode/trade_reviews/' + trade_review_id
         API::request(:patch, end_point_url, options)
       end
 

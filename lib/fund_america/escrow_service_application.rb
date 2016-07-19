@@ -21,7 +21,7 @@ module FundAmerica
       # Output: Updates the escrow service application with matching id
       # Important: Sandbox only method
       def update(escrow_service_application_id, options)
-        API::request(:patch, "https://sandbox.fundamerica.com/api/test_mode/escrow_service_applications/#{escrow_service_application_id}", options)
+        API::request(:patch, "test_mode/escrow_service_applications/#{escrow_service_application_id}", options)
       end
 
       # End point: https://apps.fundamerica.com/api/escrow_service_applications/:id (GET)
