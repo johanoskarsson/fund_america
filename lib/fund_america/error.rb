@@ -21,7 +21,7 @@ module FundAmerica
       when 404 then
         'Resource was not found'
       when 422 then
-        'This usually means you are missing or have supplied invalid parameters for a request'
+        "This usually means you are missing or have supplied invalid parameters for a request: #{parsed_response}"
       when 500 then
         err = "Internal server error. Something went wrong. This is a bug. Please report it to support immediately."
         parsed_response_details = parsed_response.match(/<dl.+\/dl>/m).to_s.split("\n").map(&:strip).join
