@@ -19,7 +19,6 @@ module FundAmerica
       # End point: https://sandbox.fundamerica.com/api/test_mode/cancel_offering_requests/:id (PATCH)
       # Usage: FundAmerica::CancelOfferingRequest.test_mode(cancel_offering_request_id, options)
       # Output: Updates a cancel_offering_request
-      # Important: This works only for Sandbox mode
       def test_mode(cancel_offering_request_id, options)
         end_point_url = 'test_mode/cancel_offering_requests/' + cancel_offering_request_id
         API::request(:patch, end_point_url, options)

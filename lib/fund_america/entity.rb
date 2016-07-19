@@ -26,7 +26,7 @@ module FundAmerica
 
       # End point: https://sandbox.fundamerica.com/api/test_mode/entities/:id (PATCH)
       # Usage: FundAmerica::Entity.test_mode(entity_id, options)
-      # Output: Updates an entity - person or company
+      # Output: Updates an entity - person or company with test_mode
       def test_mode(entity_id, options)
         end_point_url = "test_mode/entities/#{entity_id}"
         API::request(:patch, end_point_url, options)
