@@ -20,10 +20,17 @@ module FundAmerica
       # Usage: FundAmerica::Entity.update(entity_id, options)
       # Output: Updates an entity - person or company
       def update(entity_id, options)
-        end_point_url = FundAmerica.base_uri + "entities/#{entity_id}"
+        end_point_url = "entities/#{entity_id}"
         API::request(:patch, end_point_url, options)
       end
 
+      # End point: https://sandbox.fundamerica.com/api/test_mode/entities/:id (PATCH)
+      # Usage: FundAmerica::Entity.test_mode(entity_id, options)
+      # Output: Updates an entity - person or company
+      def test_mode(entity_id, options)
+        end_point_url = "test_mode/entities/#{entity_id}"
+        API::request(:patch, end_point_url, options)
+      end
       # End point: https://apps.fundamerica.com/api/entities/:id (GET)
       # Usage: FundAmerica::Entity.details(entity_id), request options &_expand[<attribute_name>]=1
       # Output: Returns the details of an entity with matching id

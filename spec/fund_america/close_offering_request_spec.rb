@@ -77,7 +77,7 @@ describe FundAmerica::CloseOfferingRequest do
         :entity_id => @entity['id']
       }
       @offering = FundAmerica::Offering.create(offering_options)
-      FundAmerica::Offering.update(@offering['id'], {:accept_investments => true })
+      FundAmerica::Offering.test_mode(@offering['id'], {:accept_investments => true })
       investment_options = {
         :amount => '5000',
         :entity => {
@@ -97,7 +97,7 @@ describe FundAmerica::CloseOfferingRequest do
         :payment_method => 'wire'
       }
       @investment = FundAmerica::Investment.create(investment_options)
-      FundAmerica::Investment.update(@investment['id'], {:status => 'received'})
+      FundAmerica::Investment.test_mode(@investment['id'], {:status => 'received'})
       co_options = {
         :offering_id => @offering['id'],
         :partial => 'true',
@@ -132,9 +132,9 @@ describe FundAmerica::CloseOfferingRequest do
       end
     end
 
-    context '#update' do
+    context '#test_mode' do
       before(:all) do
-        @updated_details = FundAmerica::CloseOfferingRequest.update(@co_request['id'], {:status => 'accepted'})
+        @updated_details = FundAmerica::CloseOfferingRequest.test_mode(@co_request['id'], {:status => 'accepted'})
       end
 
       it 'must have a response' do

@@ -54,8 +54,8 @@ describe FundAmerica::AmlException do
   # TODO i can't find a way to create an aml exception in test mode in order to test this
   # context '#details' do
   #   before(:all) do
-  #     @aml_exception = FundAmerica::AmlException.update("yXlIZxuXRj2mkCgrxWtSRw", { 
-  #       status: "contact_issuer", 
+  #     @aml_exception = FundAmerica::AmlException.test_mode("yXlIZxuXRj2mkCgrxWtSRw", { 
+  #       status: "contact_issuer",
   #       documentation_required: "true"
   #     })
   #     @aml_e = FundAmerica::AmlException.details(@aml_exception['id'])

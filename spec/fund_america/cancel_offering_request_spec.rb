@@ -77,7 +77,7 @@ describe FundAmerica::CancelOfferingRequest do
         :entity_id => @entity['id']
       }
       @offering = FundAmerica::Offering.create(offering_options)
-      FundAmerica::Offering.update(@offering['id'], {:accept_investments => true })
+      FundAmerica::Offering.test_mode(@offering['id'], {:accept_investments => true })
       co_options = {
         :offering_id => @offering['id'],
         :comment => 'Test comment'
@@ -111,9 +111,9 @@ describe FundAmerica::CancelOfferingRequest do
       end
     end
 
-    context '#update' do
+    context '#test_mode' do
       before(:all) do
-        @updated_details = FundAmerica::CancelOfferingRequest.update(@co_request['id'], {:status => 'confirmed'})
+        @updated_details = FundAmerica::CancelOfferingRequest.test_mode(@co_request['id'], {:status => 'confirmed'})
       end
 
       it 'must have a response' do
