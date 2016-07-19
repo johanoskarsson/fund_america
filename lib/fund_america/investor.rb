@@ -6,14 +6,14 @@ module FundAmerica
       # Usage: FundAmerica::Investor.list
       # Output: Returns list of investors
       def list
-        API::request(:get, FundAmerica.base_uri + 'investors')
+        API::request(:get, 'investors')
       end
 
       # End point: https://apps.fundamerica.com/api/investors (POST)
       # Usage: FundAmerica::Investor.create(options)
       # Output: Creates a new investor - proxy, joint, ira
       def create(options)
-        API::request(:post, FundAmerica.base_uri + 'investors', options)
+        API::request(:post, 'investors', options)
       end
 
       # End point: https://apps.fundamerica.com/api/investors/:id (PATCH)
@@ -21,7 +21,7 @@ module FundAmerica
       # Output: Updates an investor - proxy, joint, irc
       # Uses test_mode update when used in sandbox mode
       def update(investor_id, options)
-        end_point_url = FundAmerica.base_uri + "#{FundAmerica.mode == 'sandbox' ? 'test_mode/' : ''}" + "investors/#{investor_id}"
+        end_point_url = (FundAmerica.mode == 'sandbox' ? 'test_mode/' : '') + "investors/#{investor_id}"
         API::request(:patch, end_point_url, options)
       end
 
@@ -29,9 +29,8 @@ module FundAmerica
       # Usage: FundAmerica::Investor.details(entity_id)
       # Output: Returns the details of an investor with matching id
       def details(investor_id)
-        API::request(:get, FundAmerica.base_uri + "investors/#{investor_id}")
+        API::request(:get, "investors/#{investor_id}")
       end
     end
   end
 end
-
