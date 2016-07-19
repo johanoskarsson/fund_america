@@ -13,13 +13,13 @@ describe FundAmerica::Error do
     end
 
     it 'must have an error message' do
-      response = FundAmerica::Error.error_message(422, {})
+      response = FundAmerica::Error.error_message(422)
       expect(response).not_to be nil
     end
 
     context '401 code' do
       before(:all) do
-        @response = FundAmerica::Error.error_message(401, {})
+        @response = FundAmerica::Error.error_message(401)
       end
 
       it 'must match 401 error message when code is 401' do
@@ -33,7 +33,7 @@ describe FundAmerica::Error do
 
     context '403 code' do
       before(:all) do
-        @response = FundAmerica::Error.error_message(403, {})
+        @response = FundAmerica::Error.error_message(403)
       end
 
       it 'must match 403 error message when code is 403' do
@@ -47,7 +47,7 @@ describe FundAmerica::Error do
 
     context '404 code' do
       before(:all) do
-        @response = FundAmerica::Error.error_message(404, {})
+        @response = FundAmerica::Error.error_message(404)
       end
 
       it 'must match 404 error message when code is 404' do
@@ -75,7 +75,7 @@ describe FundAmerica::Error do
 
     context '500 code' do
       before(:all) do
-        @response = FundAmerica::Error.error_message(500, {})
+        @response = FundAmerica::Error.error_message(500)
       end
 
       it 'must match 500 error message when code is 500' do
