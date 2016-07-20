@@ -6,7 +6,7 @@ module FundAmerica
       # Usage: FundAmerica::InvestorPaymentMethod.create(investor_payment_id)
       # Output: Creates a new investor payment method
       def create(options)
-        API::request(:post, FundAmerica.base_uri + "investor_payment_methods", options)
+        API::request(:post, "investor_payment_methods", options)
       end
 
     end
