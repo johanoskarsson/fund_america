@@ -109,9 +109,9 @@ describe FundAmerica::Offering do
       end
     end
 
-    context '#update' do
+    context '#test_mode' do
       before(:all) do
-        @offering_updated = FundAmerica::Offering.update(@offering['id'], {:accept_investments => true})
+        @offering_updated = FundAmerica::Offering.test_mode(@offering['id'], {:accept_investments => true})
       end
 
       it 'must have a response' do

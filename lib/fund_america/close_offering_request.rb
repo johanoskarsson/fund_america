@@ -19,10 +19,9 @@ module FundAmerica
       end
 
       # End point: https://sandbox.fundamerica.com/api/test_mode/close_offering_requests/:id (PATCH)
-      # Usage: FundAmerica::CloseOfferingRequest.update(close_offering_request_id, options)
+      # Usage: FundAmerica::CloseOfferingRequest.test_mode(close_offering_request_id, options)
       # Output: Updates a close_offering_request
-      # Important: This works only for Sandbox mode
-      def update(close_offering_request_id, options)
+      def test_mode(close_offering_request_id, options)
         end_point_url = 'test_mode/close_offering_requests/' + close_offering_request_id
         API::request(:patch, end_point_url, options)
       end

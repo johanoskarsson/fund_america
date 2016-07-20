@@ -17,10 +17,10 @@ module FundAmerica
       end
 
       # End point: https://sandbox.fundamerica.com/api/test_mode/aml_exceptions/:id (PATCH)
-      # Usage: FundAmerica::AmlException.update(aml_exception_id)
+      # Usage: FundAmerica::AmlException.test_mode(aml_exception_id)
       # Output: Updates an aml exception in test mode
       # Important: This works only for Sandbox mode
-      def update(aml_exception_id, options)
+      def test_mode(aml_exception_id, options)
         API::request(:patch, "test_mode/aml_exceptions/#{aml_exception_id}", options)
       end
 

@@ -77,7 +77,7 @@ describe FundAmerica::Investment do
         :entity_id => @entity['id']
       }
       @offering = FundAmerica::Offering.create(offering_options)
-      FundAmerica::Offering.update(@offering['id'], {:accept_investments => true })
+      FundAmerica::Offering.test_mode(@offering['id'], {:accept_investments => true })
       investment_options = {
         :amount => '5000',
         :entity => {
@@ -121,9 +121,9 @@ describe FundAmerica::Investment do
       end
     end
 
-    context '#update' do
+    context '#test_mode' do
       before(:all) do
-        @updated_details = FundAmerica::Investment.update(@investment['id'], {:status => 'received'})
+        @updated_details = FundAmerica::Investment.test_mode(@investment['id'], {:status => 'received'})
       end
 
       it 'must have a response' do

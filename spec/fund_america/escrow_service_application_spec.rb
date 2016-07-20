@@ -124,9 +124,9 @@ describe FundAmerica::EscrowServiceApplication do
       end
     end
 
-    context '#update' do
+    context '#test_mode' do
       before(:all) do
-        @updated_details = FundAmerica::EscrowServiceApplication.update(@esa['id'], {:status => 'accepted'})
+        @updated_details = FundAmerica::EscrowServiceApplication.test_mode(@esa['id'], {:status => 'accepted'})
       end
 
       it 'must have a response' do
