@@ -42,7 +42,10 @@ module FundAmerica
 
       # Parses a JSON response
       def parse_response_body(body, response_code)
-        parsed_response = JSON.parse(body)
+        # RFC4627 restricts the valid top-level JSON to objects and arrays.
+        # ECMA-404 and RFC7159 which supersedes RFC4627 does not restrict the
+        # top-level values.  This is the standard ruby hack to deal with this.
+        parsed_response = JSON.parse("[#{body}]")[0]
       rescue JSON::ParserError => _e
         # Would like to do an error message like:
         #   "Could not parse response body as JSON: #{body}"
